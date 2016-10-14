@@ -1,5 +1,4 @@
 [
-
 	{
 		"name" : "Daniel",
 		"age" : 25,
@@ -19,13 +18,13 @@
 
 	{
 		"name" : "Peter",
-		"age" : 26,
+		"age" : 25,
 		"finances" : {
 			"startcapital" : 2000,
 			"monthlyadd" : 250
 		},
 		"pension" : {
-			"age" : 67,
+			"age" : 65,
 			"interest": {
 				"pessimistic" : 1.02,
 				"average": 1.04,
@@ -36,13 +35,13 @@
 
 	{
 		"name" : "Jimmy",
-		"age" : 29,
+		"age" : 25,
 		"finances" : {
 			"startcapital" : 10000,
 			"monthlyadd" : 500
 		},
 		"pension" : {
-			"age" : 70,
+			"age" : 65,
 			"interest": {
 				"pessimistic" : 1.02,
 				"average": 1.04,
@@ -53,13 +52,13 @@
 
 	{
 		"name" : "Hendrik",
-		"age" : 35,
+		"age" : 25,
 		"finances" : {
 			"startcapital" : 40000,
 			"monthlyadd" : 1000
 		},
 		"pension" : {
-			"age" : 59,
+			"age" : 65,
 			"interest": {
 				"pessimistic" : 1.02,
 				"average": 1.04,
