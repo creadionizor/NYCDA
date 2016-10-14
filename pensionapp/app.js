@@ -3,19 +3,19 @@ let pensionReader = require(__dirname + '/json-file-reader');
 
 pensionReader(__dirname + '/customers.json', (customer) => {
 
-	for (var x = customer.length - 1; x >= 0; x--) {
+	for (let x = customer.length - 1; x >= 0; x--) {
 
-		for (var i = customer[x].pension.duration - 1; i >= 0; i--) {
+		for (let i = customer[x].pension.duration - 1; i >= 0; i--) {
 		
-				// Add monthly spend to all the scenarios		
-				customer[x].pension.endamount.pessimistic += (customer[x].finances.monthlyadd * 12);
-				customer[x].pension.endamount.average += (customer[x].finances.monthlyadd * 12);
-				customer[x].pension.endamount.optimistic += (customer[x].finances.monthlyadd * 12);
+			// Add monthly spend to all the scenarios		
+			customer[x].pension.endamount.pessimistic += (customer[x].finances.monthlyadd * 12);
+			customer[x].pension.endamount.average += (customer[x].finances.monthlyadd * 12);
+			customer[x].pension.endamount.optimistic += (customer[x].finances.monthlyadd * 12);
 
-				// Calculate the added interest
-				customer[x].pension.endamount.pessimistic *= (customer[x].pension.interest.pessimistic);
-				customer[x].pension.endamount.average *= (customer[x].pension.interest.average);
-				customer[x].pension.endamount.optimistic *= (customer[x].pension.interest.optimistic);
+			// Calculate the added interest
+			customer[x].pension.endamount.pessimistic *= (customer[x].pension.interest.pessimistic);
+			customer[x].pension.endamount.average *= (customer[x].pension.interest.average);
+			customer[x].pension.endamount.optimistic *= (customer[x].pension.interest.optimistic);
 		}// end of pension duration loop 
 
 	// Output our data
@@ -28,7 +28,6 @@ pensionReader(__dirname + '/customers.json', (customer) => {
 		console.log("In an optimistic scenario you will earn: €" + prettyNr(customer[x].pension.endamount.optimistic)+ "\n");
 	}
 });//end of pension reader 
-
 
 
 // Round numbers in decimals
