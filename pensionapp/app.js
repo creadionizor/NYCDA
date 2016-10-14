@@ -30,8 +30,8 @@ var calcCompound = (customer) => {
 
 		// Calculate the added interest
 		customer.pension.endamount.pessimistic *= (customer.pension.interest.pessimistic);
-		customer.pension.endamount.average *= (customer.pension.interest.pessimistic);
-		customer.pension.endamount.optimistic *= (customer.pension.interest.pessimistic);
+		customer.pension.endamount.average *= (customer.pension.interest.average);
+		customer.pension.endamount.optimistic *= (customer.pension.interest.optimistic);
 	}
 
 	// Output our data
