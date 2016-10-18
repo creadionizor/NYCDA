@@ -1,0 +1,22 @@
+[
+	{
+		"firstname": "Daniel",
+		"lastname" : "van der Woude", 
+		"email" : "c.d.a.vanderwoude@gmail.com"
+	},
+	{
+		"firstname": "Willem",
+		"lastname" : "Wever", 
+		"email" : "bever@dam.nl"
+	},
+	{
+		"firstname": "Internet",
+		"lastname" : "Gekkie", 
+		"email" : "geenstijl@gdumpert.nl"
+	},
+	{
+		"firstname": "Plastic",
+		"lastname" : "Duck", 
+		"email" : "bathtub@localpond.com"
+	}
+]
