@@ -1,3 +1,5 @@
+// VERSION 3 
+
 // Require Express Package 
 const express = require ('express');
 // Require the FS Library
@@ -28,7 +30,6 @@ app.get('/users', (req,res) => {
 	})
 })
 
-
 // render the search page
 app.get('/search', (req,res) => {
 	res.render('search')
@@ -42,17 +43,49 @@ app.post('/result', (req, res) => {
 		if (err) throw err
 		// parse the json file
 		let parsedData = JSON.parse(data)
+		let searchData = []
 		// loop though the parsedData
 		for (let i = parsedData.length - 1; i >= 0; i--) {
 			// if the username is exactly equal to the search query
 			if (parsedData[i].userName === req.body.query) {	
-				// render result page
-				res.render('result', {data: parsedData[i]})
+				// store the username data
+				searchData.push(parsedData[i])			
 			}
-			else {
-				//create else statment later
-			}	
-		}    
+		}   
+		// if there is user data 
+		if (searchData.length > 0){
+			// render the result page
+			res.render('result', {data: searchData})
+		// if no user data 
+		} else {
+			// render the sorry page
+			res.render('sorry')
+		}
+	})
+});
+
+// render the create username page
+app.get('/create', (req,res) => {
+	res.render('create')
+})
+
+// post data of create page to users page 
+app.post('/users', (req, res) => {
+    // read the json file name 
+    fs.readFile(__dirname + "/users.json", (err,data) => {
+		// if error throw an error
+		if (err) throw err
+		// parse the json file
+		let parsedData = JSON.parse(data)
+		// push data into parsedData
+		parsedData.push(req.body)
+		// re-write the json file
+		fs.writeFile(__dirname + "/users.json", JSON.stringify(parsedData), (err,data) => {
+    		if (err) throw err
+    			else {
+    				res.render('users', {data: parsedData})
+    			}
+   		 })
 	})
 });
 
@@ -62,17 +95,7 @@ app.listen(8000, () => {
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
+// -- PREVIOUS VERSIONS -- -- OWN REFERENCE -- -- PREVIOUS VERSIONS -- -- OWN REFERENCE -- 
 
 // VERSION 1 
 
@@ -173,3 +196,4 @@ app.listen(8000, () => {
 // app.listen(8000, () => {
 // 	console.log("Server Running Like Usain Bolt!")
 // })
+
