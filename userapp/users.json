@@ -1,0 +1,26 @@
+[
+	{
+		"userName" : "Master of Tectonic",
+		"firstName": "Techno",
+		"lastName" : "Viking", 
+		"email" : "amsterdam@danceevent.com"
+	},
+	{
+		"userName" : "Epic Beaver",
+		"firstName": "Willem",
+		"lastName" : "Wever", 
+		"email" : "bever@dam.builder"
+	},
+	{
+		"userName" : "Schreeuwlelijk",
+		"firstName": "Internet",
+		"lastName" : "Gekkie", 
+		"email" : "geenstijl@dumpert.nl"
+	},
+	{
+		"userName": "BathtubLover1990",
+		"firstName": "Plastic",
+		"lastName" : "Duck", 
+		"email" : "bathtub@localpond.com"
+	}
+]

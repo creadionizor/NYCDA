@@ -1,0 +1,17 @@
+<!-- PUG Page Displaying the create user form-->
+html
+	head
+	body
+		h1 Create user page up and running
+		p Add yourself to the infinite power list! 
+		div
+			form(action="users" method="post")
+				label(for="userName") Username:
+				input(type="text" name="userName")
+				label(for="firstName") First Name:
+				input(type="text" name="firstName")
+				label(for="lastName") Last Name:
+				input(type="text" name="lastName")
+				label(for="email") E-Mail:
+				input(type="email" name="email")
+				input(type="submit")
