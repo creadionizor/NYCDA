@@ -1,22 +1,26 @@
 [
 	{
-		"firstname": "Daniel",
-		"lastname" : "van der Woude", 
-		"email" : "c.d.a.vanderwoude@gmail.com"
+		"userName" : "Master of Tectonic",
+		"firstName": "Techno",
+		"lastName" : "Viking", 
+		"email" : "amsterdam@danceevent.com"
 	},
 	{
-		"firstname": "Willem",
-		"lastname" : "Wever", 
-		"email" : "bever@dam.nl"
+		"userName" : "Epic Beaver",
+		"firstName": "Willem",
+		"lastName" : "Wever", 
+		"email" : "bever@dam.builder"
 	},
 	{
-		"firstname": "Internet",
-		"lastname" : "Gekkie", 
-		"email" : "geenstijl@gdumpert.nl"
+		"userName" : "Schreeuwlelijk",
+		"firstName": "Internet",
+		"lastName" : "Gekkie", 
+		"email" : "geenstijl@dumpert.nl"
 	},
 	{
-		"firstname": "Plastic",
-		"lastname" : "Duck", 
+		"userName": "BathtubLover1990",
+		"firstName": "Plastic",
+		"lastName" : "Duck", 
 		"email" : "bathtub@localpond.com"
 	}
 ]
