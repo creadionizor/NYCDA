@@ -1,0 +1,16 @@
+{
+	"name" : "Patrick",
+	"age" : 30,
+	"finances" : {
+		"startcapital" : 100000,
+		"monthlyadd" : 2500
+	},
+	"pension" : {
+		"age" : 50,
+		"interest": {
+			"pessimistic" : 1.02,
+			"average": 1.04,
+			"optimistic" : 1.08
+		}
+	}
+}

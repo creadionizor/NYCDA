@@ -7,23 +7,23 @@ function jsonReader (filename, callback) {
 		// if cannot read error
 		if (err) throw err;
 		// parse the json file 
-		let customer = JSON.parse(data);
+		let customers = JSON.parse(data);
 
 		//loop though all the customer profiles
-		for (var i = customer.length - 1; i >= 0; i--) {
+		for (var i = customers.length - 1; i >= 0; i--) {
 
 			// Set end amount prop and calucate total duration
-			customer[i].pension.endamount = {
-				pessimistic: customer[i].finances.startcapital,
-				average: customer[i].finances.startcapital,
-				optimistic: customer[i].finances.startcapital
+			customers[i].pension.endamount = {
+				pessimistic: customers[i].finances.startcapital,
+				average: customers[i].finances.startcapital,
+				optimistic: customers[i].finances.startcapital
 			};
-			customer[i].pension.duration = (customer[i].pension.age - customer[i].age);
+			customers[i].pension.duration = (customers[i].pension.age - customers[i].age);
 
 		}//end of customer profile loop 
 
 	// callback json
-	callback(customer);
+	callback(customers);
 
 	}) // end of readfile function
 } // end of jsonreader function
