@@ -1,6 +1,6 @@
 // Calc function
 function calculatePension (customer, callback) {
-	let calculationResults = []
+	let calculationResults = [];
 	for (let x = customer.length - 1; x >= 0; x--) {
 
 		for (let i = customer[x].pension.duration - 1; i >= 0; i--) {
@@ -13,7 +13,7 @@ function calculatePension (customer, callback) {
 			customer[x].pension.endamount.pessimistic  *= (customer[x].pension.interest.pessimistic);
 			customer[x].pension.endamount.average      *= (customer[x].pension.interest.average);
 			customer[x].pension.endamount.optimistic   *= (customer[x].pension.interest.optimistic);
-		} // end of i loop - second loop
+		}; // end of i loop - second loop
 
 		// Output our data
 		calculationResults.push({ 
@@ -25,15 +25,15 @@ function calculatePension (customer, callback) {
 			"pessimistic" : prettyNr(customer[x].pension.endamount.pessimistic),
 			"average" : prettyNr(customer[x].pension.endamount.average),
 			"optimistic" : prettyNr(customer[x].pension.endamount.optimistic)
-		})// end of push
+		});// end of push
 
 		if (calculationResults.length === customer.length) {
 			callback(calculationResults);
-		} // end if statement
+		}; // end if statement
 
-	}// end of x loop - first loop
+	};// end of x loop - first loop
 
-} // end of pension calculator 
+}; // end of pension calculator 
 
 // Number convertions 
 
@@ -53,5 +53,5 @@ let prettyNr = (number) => {
 };
 
 // // Exports the filereader function
-module.exports = calculatePension
+module.exports = calculatePension;
 

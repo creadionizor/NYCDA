@@ -11,7 +11,7 @@ reader('/customers/', (customer) => {
 		    if (err) throw err;
 		    else {
 		    	console.log("The file was saved!");
-		    }    
-		})//end writefile
-	})//end calculate
-}) //end reader
+		    };    
+		});//end writefile
+	});//end calculate
+}); //end reader

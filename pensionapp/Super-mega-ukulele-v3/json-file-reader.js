@@ -5,7 +5,7 @@ let fs = require('fs'); // Require FS library
 function jsonReader (dirname, callback) {
 	// read directory
 	fs.readdir(__dirname + dirname , 'utf8', (err,data) => {
-		let customersResults = []
+		let customersResults = [];
 		// if cannot read directory 
 		if (err) throw err;
 		// loop though the files in directory
@@ -18,7 +18,7 @@ function jsonReader (dirname, callback) {
 				let customers = JSON.parse(filename);
 
 				// store customers in an array
-				customersResults.push(customers)
+				customersResults.push(customers);
 
 				//loop though all the customer profiles
 				for (let i = customersResults.length - 1; i >= 0; i--) {
@@ -36,17 +36,17 @@ function jsonReader (dirname, callback) {
 				// if all customer results are processed callback json
 				if (customersResults.length === data.length) {
 					callback(customersResults);
-				} 
-			}) // end of readfile function
+				}; 
+			}); // end of readfile function
 
-		})//end loop for each file 
+		});//end loop for each file 
 
-	})// end readdirectory
+	});// end readdirectory
 
-}// end of function 			
+};// end of function 			
 	 	
 // Exports the filereader function
-module.exports = jsonReader
+module.exports = jsonReader;
 
 
 
