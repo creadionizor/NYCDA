@@ -1,0 +1,16 @@
+{
+	"name" : "Diderick",
+	"age" : 40,
+	"finances" : {
+		"startcapital" : 50000,
+		"monthlyadd" : 1000
+	},
+	"pension" : {
+		"age" : 70,
+		"interest": {
+			"pessimistic" : 1.02,
+			"average": 1.04,
+			"optimistic" : 1.08
+		}
+	}
+}

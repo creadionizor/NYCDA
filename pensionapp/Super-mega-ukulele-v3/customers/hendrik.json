@@ -1,0 +1,16 @@
+{
+	"name" : "Hendrik",
+	"age" : 33,
+	"finances" : {
+		"startcapital" : 15000,
+		"monthlyadd" : 1200
+	},
+	"pension" : {
+		"age" : 57,
+		"interest": {
+			"pessimistic" : 1.02,
+			"average": 1.04,
+			"optimistic" : 1.08
+		}
+	}
+}
