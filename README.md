@@ -15,5 +15,16 @@ NYCDA Homework
 <p><b>Technology used:</b> AngularJS</p>
 
 <h3>Pension App:</h3>
-<p>Created an application that reads a customer .json file and calculates the compound interest for a pension</p>
 <p><b>Technology used:</b> node.js</p>
+<h5>V1</h5>
+<p>Compound interest app in a node module</p>
+<br>
+<h5>V2</h5>
+<p>Customers.json with an array of customer objects, which output all customer pension results to the terminal</p>
+<br>
+<h5>V3</h5>
+<p>Customers folder with 10 customer json files. App that reads all files in this directory and writes the results of the pension calculations to a 'customerprojections.json' file as an array of result objects.</p>
+<br>
+<h5>V4</h5>
+<p>Random generator that populates a x number of customer json files with random but reasonable data. Then useses app to calculate their hypothetical pensions</p>
+
