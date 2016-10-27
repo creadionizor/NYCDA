@@ -9,6 +9,8 @@ const bodyParser = require('body-parser');
 // Initiate express App
 const app = express();
 
+app.use(express.static('static'));
+
 // Use the body parser inside the app
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -22,7 +24,9 @@ app.get('/users', (req,res) => {
 	// read the Json file
 	fs.readFile(__dirname + "/users.json", (err,data) => {
 		// if error throw an error
-		if (err) throw err
+		if (err) {
+			res.send(err)
+		}
 		// parse the json file
 		let parsedData = JSON.parse(data)
 		// render the index and the data 
@@ -36,7 +40,7 @@ app.get('/search', (req,res) => {
 })
 
 // search data submitted on search page
-app.post('/result', (req, res) => {
+app.post('/search', (req, res) => {
     // read the json file name 
     fs.readFile(__dirname + "/users.json", (err,data) => {
 		// if error throw an error
@@ -47,20 +51,15 @@ app.post('/result', (req, res) => {
 		// loop though the parsedData
 		for (let i = parsedData.length - 1; i >= 0; i--) {
 			// if the username is exactly equal to the search query
-			if (parsedData[i].userName === req.body.query) {	
+			if (parsedData[i].userName.toLowerCase().indexOf(req.body.query.toLowerCase()) === 0) {	
 				// store the username data
+				// parsedData[i].userName.indexOf(req.body.query)
 				searchData.push(parsedData[i])			
 			}
 		}   
-		// if there is user data 
-		if (searchData.length > 0){
-			// render the result page
-			res.render('result', {data: searchData})
-		// if no user data 
-		} else {
-			// render the sorry page
-			res.render('sorry')
-		}
+		// render the result page
+		res.send(searchData)
+
 	})
 });
 
@@ -196,4 +195,3 @@ app.listen(8000, () => {
 // app.listen(8000, () => {
 // 	console.log("Server Running Like Usain Bolt!")
 // })
-
