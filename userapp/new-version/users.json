@@ -1,0 +1,38 @@
+[
+	{
+		"userName" : "Master of Tectonic",
+		"firstName": "Techno",
+		"lastName" : "Viking", 
+		"email" : "amsterdam@danceevent.com"
+	},
+	{
+		"userName" : "Epic Beaver",
+		"firstName": "Willem",
+		"lastName" : "Wever", 
+		"email" : "beaver@dam.builder"
+	},
+	{
+		"userName" : "Schreeuwlelijk",
+		"firstName": "Internet",
+		"lastName" : "Gekkie", 
+		"email" : "geenstijl@dumpert.nl"
+	},
+	{
+		"userName": "BathtubLover1990",
+		"firstName": "Plastic",
+		"lastName" : "Duck", 
+		"email" : "bathtub@localpond.com"
+	},
+	{
+		"userName": "Master of Tectonic",
+		"firstName": "Rave",
+		"lastName" : "Dave", 
+		"email" : "rave4life@danceevent.com"
+	},
+	{
+		"userName" : "Epic Beaver",
+		"firstName": "Henk",
+		"lastName" : "the Beaver", 
+		"email" : "beaver@dam.destroyer"
+	}
+]

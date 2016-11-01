@@ -1,0 +1,16 @@
+<!-- PUG Page Displaying Search Bar-->
+html
+	head
+		script(src='scripts/jquery-3.1.1.min.js') 
+		script(src='scripts/script.js')
+	body
+		h1 Search Engine
+		p Who oh Who are the users? 
+		div
+			form(autocomplete="off")
+				label(for="usersearch") Search Users:
+				input#input(type='text', list='json-datalist', placeholder="Username", name="query")
+				datalist#json-datalist
+				input#searchbutton(type="submit")
+		div#searched-data
+
