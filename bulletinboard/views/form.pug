@@ -1,0 +1,21 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        title Form
+    body
+        nav
+            li
+                ul
+                    a(href='board') Bulletin Board
+                ul
+                    a(href='form') Form
+        form(autocomplete='off' action="/board" method="post")
+            div
+                label(for='title') Title: 
+                input#title(type='text', name='user_title')
+            div
+                label(for='body') Message:
+                textarea#body(name='user_body')
+            .button
+                button(type='submit') Send your message
