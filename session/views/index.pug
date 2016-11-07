@@ -1,0 +1,27 @@
+doctype html
+html
+	head
+		script(src='jquery-3.1.1.min.js') 
+		script.
+			$(document).ready(function () {
+				$('#submit').click(function(event) {
+					if($('#email').val().trim().length === 0 || $('#password').val().trim().length === 0) {
+						event.preventDefault();
+						$('#error-message').html("Your username or password is empty.");
+					}
+				});
+			});
+	body
+		if user
+			a(href='/profile') view profile
+			br
+			a(href='/logout') log out
+		else
+			form(action='/login' method='post')
+				label email
+				input#email(name='email' required)
+				label password
+				input#password(name='password' required)
+				input(type='submit' value='login' id='submit')
+
+		h2#error-message= message
