@@ -1,0 +1,47 @@
+doctype html
+html
+	head
+		script(src='js/jquery-3.1.1.min.js') 
+		script(src='js/materialize.min.js') 
+		script(src='js/main.js') 
+		link(type='text/css', rel='stylesheet', href='css/materialize.min.css', media='screen,projection')
+		link(type='text/css', rel='stylesheet', href='css/style.css')
+	body
+		nav
+			.nav-wrapper
+				a.brand-logo(href='#') Logo
+				ul#nav-mobile.right.hide-on-med-and-down
+					li
+						a(href='/') Home
+					if user
+						li
+							a(href='/profile') View Profile
+						li
+							a(href='/logout') Log Out
+						li 
+							a(href='/signup') Sign Up
+					else
+						li
+							form(action='/login' method='post')
+								.row
+									.col.s2
+										label email
+									.col.s3
+										input#email(name='email' required autocomplete='off')
+									.col.s2
+										label password
+									.col.s3
+										input#password(name='password' required secret autocomplete='off')
+									.col.s2
+										input(type='submit' value='login' id='submit')
+			section
+				h2#error-message= message
+				div
+					form(action='/signup' method='post')
+						label name 
+						input#name(name='su_name' required width="100px") 
+						label email
+						input#email(name='su_email' required width="100px")
+						label password
+						input#password(name='su_password' required width="100px")
+						input(type='submit' value='Sign Up' id='submit')

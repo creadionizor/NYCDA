@@ -1,10 +1,31 @@
 doctype html
 html
 	head
+		script(src='js/jquery-3.1.1.min.js') 
+		script(src='js/materialize.min.js') 
+		script(src='js/main.js') 
+		link(type='text/css', rel='stylesheet', href='css/materialize.min.css', media='screen,projection')
+		link(type='text/css', rel='stylesheet', href='css/style.css')
 	body
-		h2= user.name
-		h3= user.email
+		nav
+			.nav-wrapper
+				a.brand-logo(href='/') Logo
+				ul#nav-mobile.right.hide-on-med-and-down
+					li
+						a(href='/') Home
+					li
+						a(href='/profile') View Profile
+					li 
+						a(href='/logout') Log Out
+					
 
-		a(href='/') home
-		br
-		a(href='/logout') log out
+		div 
+			h4 Hello #{user.name}!
+			p Since you signed up you have posted X times
+			p Since you signed up you have commented X times
+		div
+			p These are all your posts: 
+
+
+
+
