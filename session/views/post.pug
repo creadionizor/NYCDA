@@ -36,59 +36,29 @@ html
 										input(type='submit' value='login' id='submit')
 
 		h2#error-message= message
-		div 
+		div
 			if user
 				div
-					h5 Bulletin Board:
+					h5 Post Page
 					ul
-					each post in bulletins
-						li Original Poster: #{post.user.name}
-						li Title: #{post.title}
-						li Body: #{post.body}
+						li Original Poster: #{bulletin.user.name}
+						li Title: #{bulletin.title}
+						li Body: #{bulletin.body}
 						p
 						p //////////////////////Comment Section\\\\\\\\\\\\\\\\\\
 						p
-						if post.comments
+						if bulletin.comments
 							ul
-								each reply in post.comments
+								each reply in bulletin.comments
 									li Comment by: #{reply.user.name}
 									li Comment: #{reply.comment}
-									p
+									p 
 						div
 							p Place your Comment 
 							form(autocomplete='off' action="/createComment" method="post")
 								div
 									label(for='comment') Comment: 
 									input#comment(type='text', name='user_comment')
-									input#bulletinid(type='text', name='bulletin_id', value=post.id, hidden)
+									input#bulletinid(type='text', name='bulletin_id', value=bulletin.id, hidden)
 								.button
 									button(type='submit') Reply
-				div
-					h3 New Bulletin Message: 
-					form(autocomplete='off' action="/createBulletin" method="post")
-						div
-							label(for='title') Title: 
-							input#title(type='text', name='user_title')
-						div
-							label(for='body') Message:
-							textarea#body(type='text' name='user_body')
-						.button
-							button(type='submit') Post Message
-			else
-				h5 Please Log-in or Sign Up to Post and Reply to Messages
-				div
-					h5 Bulletin Board:
-					ul
-					each post in bulletins
-						li Original Poster: #{post.user.name}
-						li Title: #{post.title}
-						li Body: #{post.body}
-						p
-						p //////////////////////Comment Section\\\\\\\\\\\\\\\\\\
-						p
-						if post.comments
-							ul
-								each reply in post.comments
-									li Comment by: #{reply.user.name}
-									li Comment: #{reply.comment}
-									p

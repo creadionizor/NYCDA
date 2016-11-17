@@ -9,7 +9,7 @@ html
 	body
 		nav
 			.nav-wrapper
-				a.brand-logo(href='/') Logo
+				a.brand-logo(href='/') I'll Be Back
 				ul#nav-mobile.right.hide-on-med-and-down
 					li
 						a(href='/') Home
@@ -21,11 +21,13 @@ html
 
 		div 
 			h4 Hello #{user.name}!
-			p Since you signed up you have posted X times
-			p Since you signed up you have commented X times
+			p Since you signed up you have posted #{user.bulletins.length} times
+			if user.comments
+			p Since you signed up you have commented #{user.comments.length } times
 		div
-			p These are all your posts: 
-
-
-
-
+			if user.bulletins
+				p These are all the posts you made: 
+					each bulletin in user.bulletins
+						ul 
+							li 
+								a(href="/post?id=" + bulletin.id) #{bulletin.title}

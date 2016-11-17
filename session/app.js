@@ -5,6 +5,7 @@ let sequelize = require('sequelize');
 let express = require('express');
 let bodyParser = require('body-parser');
 let session = require('express-session');
+let bcrypt = require('bcrypt')
 
 // APP AND VIEW ENGINE 
 
@@ -18,6 +19,8 @@ app.set('view engine', 'pug')
 app.set('views', __dirname + '/views')
 // Initiate body parser
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
 
 // DATABASE
 
@@ -61,21 +64,19 @@ Bulletin.hasMany(Comment)
 Comment.belongsTo(Bulletin)
 
 // Sync database 
-db.sync({force: true}).then(function () {
-	Bulletin.create({
-		title: "Un Romanzo Criminale",
-		body: "Coltivava ancora il sogno di dare un ordine al caos. E invece, il gioco esigeva che si facesse l'opposto: dare un caos all'ordine"
-	})
-	User.create({
-		name: "Arnold Schwarzenegger",
-		email: "iwill@beback",
-		password: "nomnomnom"
-	}).then(function (user) {
+db.sync({force: true}).then( () => {
+	bcrypt.hash("nomnomnom", 8, (err,hash) =>{
+		User.create({
+			name: "Arnold Schwarzenegger",
+			email: "iwill@beback",
+			password: hash
+		
+	}).then( (user) => {
 		// Available: user
 		user.createBulletin({
 			title: "Ich Bin Strong YAAA",
 			body: "My name is Arnie! How NICE to meet you!"
-		}).then(function (bulletin){
+		}).then( (bulletin) => {
 			// Available: user + bulletin
 			user.createComment({ // Create comment on behalf of user
 				comment: "Can you zhe my 9 MILIMETER YAA? "
@@ -85,10 +86,10 @@ db.sync({force: true}).then(function () {
 			} )
 		})
 	});
-}, function (error) {
+}, (error) => {
 	console.log('sync failed: ');
 	console.log(error);
-});
+})});
 
 // Server listening on port 		
 let server = app.listen(8000, () => {
@@ -105,28 +106,66 @@ app.use(session({
 
 // ROOT
 
-app.get('/', function(req,res) {
+app.get('/', (req,res) => {
 	let user = req.session.user;	
 	if (user === undefined) {
 		Bulletin.findAll({
-			attributes: ['title', 'body'],
-			include: [User]
-		}).then(bulletin => {	
+			attributes: ['id', 'title', 'body'],
+			include: [User, {model: Comment, include: [User]}]
+		}).then(bulletins => {	
+			console.log(bulletins)
 			res.render('index', {
 				message: req.query.message,
 				user: req.session.user,
-				bulletin: bulletin,
-				user: user
+				bulletins: bulletins
 			}) 
 		})
 	} else {
 		Bulletin.findAll({
-			attributes: ['title', 'body'],
-			include: [User, Comment]
-		}).then(bulletin => {
+			attributes: ['id', 'title', 'body'],
+			include: [User, {model: Comment, include: [User]}]
+		}).then(bulletins => {
 			res.render('index', {
-				bulletin: bulletin,
-				user: user
+				bulletins: bulletins,
+				user: req.session.user
+			})
+
+		})
+	}
+})
+
+
+app.get('/overview', (req,res) =>{
+	Bulletin.findAll({
+			attributes: ['title', 'body'],
+			include: [User, {model: Comment, include: [User]}]
+		}).then(bulletins =>{
+		res.send(bulletins)
+	})
+})
+
+
+app.get('/index', (req,res) => {
+	let user = req.session.user;	
+	if (user === undefined) {
+		Bulletin.findAll({
+			attributes: ['id', 'title', 'body'],
+			include: [User, {model: Comment, include: [User]}]
+		}).then(bulletins => {	
+			res.render('index', {
+				message: req.query.message,
+				user: req.session.user,
+				bulletins: bulletins
+			}) 
+		})
+	} else {
+		Bulletin.findAll({
+			attributes: ['id', 'title', 'body'],
+			include: [User, {model: Comment, include: [User]}]
+		}).then(bulletins => {
+			res.render('index', {
+				bulletins: bulletins,
+				user: req.session.user
 			})
 		})
 	}
@@ -148,7 +187,7 @@ app.post('/createBulletin', (req,res)=> {
 				title: req.body.user_title,
 				body: req.body.user_body
 			})
-		}). then(()=> {
+		}).then(()=> {
 			res.redirect('index')
 		})
 	}
@@ -166,58 +205,51 @@ app.post('/createComment', (req,res)=>{
 			where: {
 				id: user.id
 			}
-		}).then ((bulletin) => {
+		}).then((user) => {
 			user.createComment({
-				comment: req.body.user_comment
-			}).then((comment => {
-				comment.setBulletin(bulletin)
-			})).then(()=> {
+				comment: req.body.user_comment,
+				bulletinId: req.body.bulletin_id
+			}).then(()=>{
 				res.redirect('index')
 			})
 		})
 	}
 })
 
-// // Post Board Page
-// app.post('/', (req,res) => {
-// 	let user = req.session.user
-// 	if (user === undefined) {
-// 		res.redirect('/?message=' +encodeURIComponent("Please log in"))
-// 	} else {
-// 		User.findOne({
-// 			where: {
-// 				id: user.id
-// 			}
-// 		}).then (function(bulletin) {
-// 			user.createComment({
-// 				comment: req.body.user_comment
-// 			}).then(comment => {
-// 				comment.setBulletin (bulletin)
-// 			})
-// 		}).then(function(){
-// 			res.redirect('index')
-// 		})
-// 	}
-// })
+// DYNAMIC POST 
 
-
-app.get('/index', (req,res) => {
+app.get('/post', (req,res)=>{
 	let user = req.session.user
-	if (user === undefined) {
+	if(user === undefined) {
 		res.redirect('/?message=' +encodeURIComponent("Please log in"))
 	} else {
-		Bulletin.findAll({
-			attributes: ['title', 'body'],
-			include: [User, Comment]
-		}).then(bulletin => {
-			res.render('index', {
-				bulletin: bulletin,
-				user: user
+		Bulletin.findOne({
+			where: {
+				id: req.query.id
+			},
+			include: [User, {model: Comment, include: [User]}]
+		}).then((bulletin) => {
+			res.render('post', {
+				bulletin: bulletin, 
+				user: req.session.user
 			})
-		}
-		)} 
-	})
+		})
+	}
+})
 
+
+// Get users 
+app.get('/fakepost', (req,res) =>{
+		Bulletin.findOne({
+			where: {
+				id: req.query.id
+			},
+			include: [{model: Comment, include: [User]}]
+		}).then((bulletin) => {
+			res.send(bulletin)
+		})
+	}
+)
 
 // SIGN UP 
 
@@ -228,12 +260,15 @@ app.get('/signup', (req,res) =>{
 
 
 app.post('/signup', (req,res) => {
-	User.create({
-		name: req.body.su_name,
-		email: req.body.su_email,
-		password: req.body.su_password
-	}).then(function(){
-		res.redirect('/?message=' +encodeURIComponent("Your Account Was Created Successfully, You can Now Log-In"))
+	bcrypt.hash(req.body.su_password, 8, (err,hash) =>{
+		User.create({
+			name: req.body.su_name,
+			email: req.body.su_email,
+			password: hash
+
+		}).then(function(){
+			res.redirect('/?message=' +encodeURIComponent("Your Account Was Created Successfully, You can Now Log-In"))
+		})
 	})
 })
 
@@ -245,20 +280,19 @@ app.get('/profile', function (req, res) {
 	if (user === undefined) {
 		res.redirect('/?message=' + encodeURIComponent("Please log in to view your profile."));
 	} else {
-		res.render('profile', {
-			user: user
-		});
-	}
+		User.findOne({
+			where: {
+				id: user.id 
+			},
+			include: [Bulletin, Comment]
+			}).then(user => {
+					res.render('profile', {
+					user: user
+					});
+				})
+			}
 });
 
-// Get users 
-app.get('/users', (req,res) =>{
-	User.findAll({
-		attributes: ['name'],
-	}).then(users =>{
-		res.send(users)
-	})
-})
 
 
 // Response messages 
@@ -278,16 +312,22 @@ app.post('/login', bodyParser.urlencoded({extended: true}), function (req, res) 
 			email: req.body.email
 		}
 	}).then(function (user) {
-		if (user !== null && req.body.password === user.password) {
-			req.session.user = user;
-			res.redirect('/profile');
-		} else {
-			res.redirect('/?message=' + encodeURIComponent("Invalid email or password."));
-		}
-	}, function (error) {
+	bcrypt.compare(req.body.password, user.password, function(err, response) {
+			if (user !== null && response === true) {
+				console.log(user)
+				req.session.user = user;
+				res.redirect('/profile');
+			} else {
+				res.redirect('/?message=' + encodeURIComponent("Invalid email or password."));
+			}
+	}, (error) => {
 		res.redirect('/?message=' + encodeURIComponent("Invalid email or password."));
+
+		})
 	});
 });
+
+
 
 // LOGOUT
 
@@ -300,16 +340,6 @@ app.get('/logout', function (req, res) {
 		res.redirect('/?message=' + encodeURIComponent("Successfully logged out."));
 	})
 });
-
-
-
-
-
-
-
-
-
-
 
 
 
