@@ -1,0 +1,33 @@
+doctype html
+html
+	head
+		script(src='js/jquery-3.1.1.min.js') 
+		script(src='js/materialize.min.js') 
+		script(src='js/main.js') 
+		link(type='text/css', rel='stylesheet', href='css/materialize.min.css', media='screen,projection')
+		link(type='text/css', rel='stylesheet', href='css/style.css')
+	body
+		nav
+			.nav-wrapper
+				a.brand-logo(href='/') I'll Be Back
+				ul#nav-mobile.right.hide-on-med-and-down
+					li
+						a(href='/') Home
+					li
+						a(href='/profile') View Profile
+					li 
+						a(href='/logout') Log Out
+					
+
+		div 
+			h4 Hello #{user.name}!
+			p Since you signed up you have posted #{user.bulletins.length} times
+			if user.comments
+			p Since you signed up you have commented #{user.comments.length } times
+		div
+			if user.bulletins
+				p These are all the posts you made: 
+					each bulletin in user.bulletins
+						ul 
+							li 
+								a(href="/post?id=" + bulletin.id) #{bulletin.title}

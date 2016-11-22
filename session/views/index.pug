@@ -1,0 +1,94 @@
+doctype html
+html
+	head
+		script(src='js/jquery-3.1.1.min.js') 
+		script(src='js/materialize.min.js') 
+		script(src='js/main.js') 
+		link(type='text/css', rel='stylesheet', href='css/materialize.min.css', media='screen,projection')
+		link(type='text/css', rel='stylesheet', href='css/style.css')
+	body
+		nav
+			.nav-wrapper
+				a.brand-logo(href='/') I'll Be Back
+				ul#nav-mobile.right.hide-on-med-and-down
+					li
+						a(href='/') Home
+					if user
+						li
+							a(href='/profile') View Profile
+						li
+							a(href='/logout') Log Out
+					else
+						li 
+							a(href='/signup') Sign Up
+						li
+							form(action='/login' method='post')
+								.row
+									.col.s2
+										label email
+									.col.s3
+										input#email(name='email' required autocomplete='off')
+									.col.s2
+										label password
+									.col.s3
+										input#password(name='password' required secret type='password' autocomplete='off')
+									.col.s2
+										input(type='submit' value='login' id='submit')
+
+		h2#error-message= message
+		div 
+			if user
+				div
+					h5 Bulletin Board:
+					ul
+					each post in bulletins
+						li Original Poster: #{post.user.name}
+						li Title: #{post.title}
+						li Body: #{post.body}
+						p
+						p //////////////////////Comment Section\\\\\\\\\\\\\\\\\\
+						p
+						if post.comments
+							ul
+								each reply in post.comments
+									li Comment by: #{reply.user.name}
+									li Comment: #{reply.comment}
+									p
+						div
+							p Place your Comment 
+							form(autocomplete='off' action="/createComment" method="post")
+								div
+									label(for='comment') Comment: 
+									input#comment(type='text', name='user_comment')
+									input#bulletinid(type='text', name='bulletin_id', value=post.id, hidden)
+								.button
+									button(type='submit') Reply
+				div
+					h3 New Bulletin Message: 
+					form(autocomplete='off' action="/createBulletin" method="post")
+						div
+							label(for='title') Title: 
+							input#title(type='text', name='user_title')
+						div
+							label(for='body') Message:
+							textarea#body(type='text' name='user_body')
+						.button
+							button(type='submit') Post Message
+			else
+				h5 Please Log-in or Sign Up to Post and Reply to Messages
+				div
+					h5 Bulletin Board:
+					ul
+					each post in bulletins
+						li Original Poster: #{post.user.name}
+						li Title: #{post.title}
+						li Body: #{post.body}
+						p
+						p //////////////////////Comment Section\\\\\\\\\\\\\\\\\\
+						p
+						if post.comments
+							ul
+								each reply in post.comments
+									li Comment by: #{reply.user.name}
+									li Comment: #{reply.comment}
+									p

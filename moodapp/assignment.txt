@@ -1,0 +1,23 @@
+# Phase one
+Make an app that has a frontend that pushes data to a file managed by the backend. The frontend should take:
+- Phrase
+- Sentiment ( positive/negative )
+The backend should save this to a file of your choice. This should all happen through AJAX requests. No page reloads!
+
+# Phase 2
+Create a module that uses bayesian machine learning to classify your Phrase as Sentiment. Basically the code should train the bayes algorithm to classify the input sentence as the 'sentiment' input.
+
+For example phrase "you are awesome" as sentiment "positive"
+
+The classification data should be saved progressively to another json file. For example 'learnings.json' or somesuch.
+
+# Phase 3
+Add a second page to your frontend where you can input a phrase. Through AJAX query your server to let the bayes algorithm classify this phrase. Then show the resulting sentiment in the page.
+
+# Phase 4
+Draw data from the twitter API and list it on one of your pages. Allow your visitor to classify twitter posts according to sentiment. Store this data in your learnings.
+
+
+## Notes
+Be sure to load your old bayes date when you reload your app.js
+COnsider using https://www.npmjs.com/package/bayes

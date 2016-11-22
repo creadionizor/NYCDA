@@ -1,0 +1,64 @@
+doctype html
+html
+	head
+		script(src='js/jquery-3.1.1.min.js') 
+		script(src='js/materialize.min.js') 
+		script(src='js/main.js') 
+		link(type='text/css', rel='stylesheet', href='css/materialize.min.css', media='screen,projection')
+		link(type='text/css', rel='stylesheet', href='css/style.css')
+	body
+		nav
+			.nav-wrapper
+				a.brand-logo(href='/') I'll Be Back
+				ul#nav-mobile.right.hide-on-med-and-down
+					li
+						a(href='/') Home
+					if user
+						li
+							a(href='/profile') View Profile
+						li
+							a(href='/logout') Log Out
+					else
+						li 
+							a(href='/signup') Sign Up
+						li
+							form(action='/login' method='post')
+								.row
+									.col.s2
+										label email
+									.col.s3
+										input#email(name='email' required autocomplete='off')
+									.col.s2
+										label password
+									.col.s3
+										input#password(name='password' required secret type='password' autocomplete='off')
+									.col.s2
+										input(type='submit' value='login' id='submit')
+
+		h2#error-message= message
+		div
+			if user
+				div
+					h5 Post Page
+					ul
+						li Original Poster: #{bulletin.user.name}
+						li Title: #{bulletin.title}
+						li Body: #{bulletin.body}
+						p
+						p //////////////////////Comment Section\\\\\\\\\\\\\\\\\\
+						p
+						if bulletin.comments
+							ul
+								each reply in bulletin.comments
+									li Comment by: #{reply.user.name}
+									li Comment: #{reply.comment}
+									p 
+						div
+							p Place your Comment 
+							form(autocomplete='off' action="/createComment" method="post")
+								div
+									label(for='comment') Comment: 
+									input#comment(type='text', name='user_comment')
+									input#bulletinid(type='text', name='bulletin_id', value=bulletin.id, hidden)
+								.button
+									button(type='submit') Reply
