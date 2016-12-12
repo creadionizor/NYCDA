@@ -1,0 +1,29 @@
+doctype html
+html(lang='en')
+	head
+		script(src='/js/materialize.min.js')
+		script(src='/js/jquery-3.1.1.min.js')
+		script(src='/js/bundle/bundle.js')
+		title Hello world 2
+	body
+		nav
+			include includes/navbar.pug
+		.background-register
+			.register-form
+				.row
+					form.col.s12
+						.row
+							.input-field.col.s12
+								input#first_name.validate(type='text')
+								label(for='first_name') First Name
+							.input-field.col.s12
+								input#last_name.validate(type='text')
+								label(for='last_name') Last Name
+							.input-field.col.s12
+								input#email.validate(type='email')
+								label(for='email') Email
+							.input-field.col.s12
+								input#password.validate(type='password')
+								label(for='password') Password
+							div
+								a.waves-effect.waves-light.btn Register

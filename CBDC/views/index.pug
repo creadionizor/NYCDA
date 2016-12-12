@@ -1,0 +1,25 @@
+doctype html
+html(lang='en')
+	head
+		script(src='/js/materialize.min.js')
+		script(src='/js/jquery-3.1.1.min.js')
+		script(src='/js/bundle/bundle.js')
+		title Test Title
+	body
+		nav
+			include includes/navbar.pug
+		.background-home
+			.login-form
+				h2 Welcome to ...
+				.row
+					form.col.s12
+						.row
+							.input-field.col.s12
+								input#email.validate(type='email')
+								label(for='email') Email
+							.input-field.col.s12
+								input#password.validate(type='password')
+								label(for='password') Password
+							div
+								a.waves-effect.waves-light.btn Log-in
+								a.waves-effect.waves-light.btn(href='register') Register
