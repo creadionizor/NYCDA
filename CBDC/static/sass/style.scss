@@ -3,7 +3,7 @@
 }
 
 .nav-wrapper {
-		background-color: #373737 ;
+	background-color: #373737 ;
 	li a{
 		color:#DCD0C0;
 	}
@@ -16,8 +16,8 @@
 	position:relative;
 	background-size: cover;
 	-webkit-background-size: cover;
-  	-moz-background-size: cover;
- 	-o-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
 
 	.login-form {
 		position:absolute;
@@ -27,7 +27,7 @@
 		-ms-transform: translateX(-50%) translateY(-50%);
 		-webkit-transform: translate(-50%,-50%);
 		transform: translate(-50%,-50%);
-	 	z-index: 11; /* 1px higher than the overlay layer */
+		z-index: 11; /* 1px higher than the overlay layer */
 	}
 }
 
@@ -37,8 +37,8 @@
 	background-image: url('/images/about_background.jpg');	
 	background-size: cover;
 	-webkit-background-size: cover;
-  	-moz-background-size: cover;
- 	-o-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
 
 	.about-text {
 		text-align: center;
@@ -58,9 +58,9 @@
 	background-image: url('/images/register_background.jpg');	
 	background-size: cover;
 	-webkit-background-size: cover;
-  	-moz-background-size: cover;
- 	-o-background-size: cover;
- 	.register-form {
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	.register-form {
 		position:absolute;
 		top:50%;
 		left:50%;
@@ -68,6 +68,29 @@
 		-ms-transform: translateX(-50%) translateY(-50%);
 		-webkit-transform: translate(-50%,-50%);
 		transform: translate(-50%,-50%);
-	 	z-index: 11; /* 1px higher than the overlay layer */
+		z-index: 11; /* 1px higher than the overlay layer */
+	}
+}
+
+/* Models */ 
+.carousel.carousel-slider.center { 
+	.carousel-item {
+		position: absolute;
+		background-size: cover;
+	}
+	#model1 {
+		background-image: url('/images/models_model1.jpg');
+	}
+
+	#model2 {
+		background-image: url('/images/models_model2.jpg');
+	}
+
+	#model3 {
+		background-image: url('/images/models_model3.jpeg');
+	}
+
+	#model4 {
+		background-image: url('/images/models_model4.jpg');
 	}
 }

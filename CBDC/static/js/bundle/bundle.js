@@ -62,17 +62,17 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!!./materialize.min.css */ 2);
+	var content = __webpack_require__(/*! !./../../~/css-loader!!./materialize.min.css */ 2);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 24)(content, {});
+	var update = __webpack_require__(/*! ./../../~/style-loader/addStyles.js */ 24)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!!./materialize.min.css", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!!./materialize.min.css");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!!./materialize.min.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!!./materialize.min.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -83,12 +83,12 @@
 
 /***/ },
 /* 2 */
-/*!********************************************************!*\
-  !*** ../~/css-loader!./static/css/materialize.min.css ***!
-  \********************************************************/
+/*!*******************************************************!*\
+  !*** ./~/css-loader!./static/css/materialize.min.css ***!
+  \*******************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 3)();
+	exports = module.exports = __webpack_require__(/*! ./../../~/css-loader/lib/css-base.js */ 3)();
 	// imports
 	
 	
@@ -100,9 +100,9 @@
 
 /***/ },
 /* 3 */
-/*!***************************************!*\
-  !*** ../~/css-loader/lib/css-base.js ***!
-  \***************************************/
+/*!**************************************!*\
+  !*** ./~/css-loader/lib/css-base.js ***!
+  \**************************************/
 /***/ function(module, exports) {
 
 	/*
@@ -339,9 +339,9 @@
 
 /***/ },
 /* 24 */
-/*!**************************************!*\
-  !*** ../~/style-loader/addStyles.js ***!
-  \**************************************/
+/*!*************************************!*\
+  !*** ./~/style-loader/addStyles.js ***!
+  \*************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -602,17 +602,17 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./style.scss */ 26);
+	var content = __webpack_require__(/*! !./../../~/css-loader!./../../~/sass-loader!./style.scss */ 26);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 24)(content, {});
+	var update = __webpack_require__(/*! ./../../~/style-loader/addStyles.js */ 24)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./style.scss", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./style.scss");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./style.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./style.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -623,17 +623,17 @@
 
 /***/ },
 /* 26 */
-/*!*****************************************************************!*\
-  !*** ../~/css-loader!../~/sass-loader!./static/sass/style.scss ***!
-  \*****************************************************************/
+/*!***************************************************************!*\
+  !*** ./~/css-loader!./~/sass-loader!./static/sass/style.scss ***!
+  \***************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 3)();
+	exports = module.exports = __webpack_require__(/*! ./../../~/css-loader/lib/css-base.js */ 3)();
 	// imports
 	
 	
 	// module
-	exports.push([module.id, ".img {\n  max-width: 100%; }\n\n.nav-wrapper {\n  background-color: #373737; }\n  .nav-wrapper li a {\n    color: #DCD0C0; }\n\n.background-home {\n  background-image: url(\"/images/login_background.jpg\");\n  height: 100vh;\n  position: relative;\n  background-size: cover;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover; }\n  .background-home .login-form {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    padding: 15px;\n    -ms-transform: translateX(-50%) translateY(-50%);\n    -webkit-transform: translate(-50%, -50%);\n    transform: translate(-50%, -50%);\n    z-index: 11;\n    /* 1px higher than the overlay layer */ }\n\n.background-about {\n  position: relative;\n  height: 100vh;\n  background-image: url(\"/images/about_background.jpg\");\n  background-size: cover;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover; }\n  .background-about .about-text {\n    text-align: center;\n    color: #fff;\n    margin: 40px auto;\n    background: rgba(22, 22, 22, 0.5);\n    width: 100%;\n    max-width: 960px;\n    border-radius: 5px;\n    padding-bottom: 32px; }\n\n.background-register {\n  position: relative;\n  height: 100vh;\n  background-image: url(\"/images/register_background.jpg\");\n  background-size: cover;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover; }\n  .background-register .register-form {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    padding: 15px;\n    -ms-transform: translateX(-50%) translateY(-50%);\n    -webkit-transform: translate(-50%, -50%);\n    transform: translate(-50%, -50%);\n    z-index: 11;\n    /* 1px higher than the overlay layer */ }\n", ""]);
+	exports.push([module.id, ".img {\n  max-width: 100%; }\n\n.nav-wrapper {\n  background-color: #373737; }\n  .nav-wrapper li a {\n    color: #DCD0C0; }\n\n.background-home {\n  background-image: url(\"/images/login_background.jpg\");\n  height: 100vh;\n  position: relative;\n  background-size: cover;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover; }\n  .background-home .login-form {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    padding: 15px;\n    -ms-transform: translateX(-50%) translateY(-50%);\n    -webkit-transform: translate(-50%, -50%);\n    transform: translate(-50%, -50%);\n    z-index: 11;\n    /* 1px higher than the overlay layer */ }\n\n.background-about {\n  position: relative;\n  height: 100vh;\n  background-image: url(\"/images/about_background.jpg\");\n  background-size: cover;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover; }\n  .background-about .about-text {\n    text-align: center;\n    color: #fff;\n    margin: 40px auto;\n    background: rgba(22, 22, 22, 0.5);\n    width: 100%;\n    max-width: 960px;\n    border-radius: 5px;\n    padding-bottom: 32px; }\n\n.background-register {\n  position: relative;\n  height: 100vh;\n  background-image: url(\"/images/register_background.jpg\");\n  background-size: cover;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover; }\n  .background-register .register-form {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    padding: 15px;\n    -ms-transform: translateX(-50%) translateY(-50%);\n    -webkit-transform: translate(-50%, -50%);\n    transform: translate(-50%, -50%);\n    z-index: 11;\n    /* 1px higher than the overlay layer */ }\n\n/* Models */\n.carousel.carousel-slider.center .carousel-item {\n  position: absolute;\n  background-size: cover; }\n\n.carousel.carousel-slider.center #model1 {\n  background-image: url(\"/images/models_model1.jpg\"); }\n\n.carousel.carousel-slider.center #model2 {\n  background-image: url(\"/images/models_model2.jpg\"); }\n\n.carousel.carousel-slider.center #model3 {\n  background-image: url(\"/images/models_model3.jpeg\"); }\n\n.carousel.carousel-slider.center #model4 {\n  background-image: url(\"/images/models_model4.jpg\"); }\n", ""]);
 	
 	// exports
 

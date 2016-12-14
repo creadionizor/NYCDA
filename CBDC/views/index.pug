@@ -12,14 +12,15 @@ html(lang='en')
 			.login-form
 				h2 Welcome to ...
 				.row
-					form.col.s12
+					form.col.s12(action='/login' method='post')
 						.row
 							.input-field.col.s12
-								input#email.validate(type='email')
+								input#email(type='email' name='email' autocomplete='off' required)
 								label(for='email') Email
 							.input-field.col.s12
-								input#password.validate(type='password')
+								input#password(type='password' name='password' autocomplete='off' required secret)
 								label(for='password') Password
 							div
-								a.waves-effect.waves-light.btn Log-in
-								a.waves-effect.waves-light.btn(href='register') Register
+								button.waves-effect.waves-light.btn(type='submit')
+									| Log-in
+								//- a.waves-effect.waves-light.btn(href='register') Register

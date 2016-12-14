@@ -2,6 +2,7 @@
 const sequelize = require( 'sequelize' )
 const bcrypt = require('bcrypt-nodejs')
 
+
 // Container object
 let db = {
 	module: {}
@@ -12,10 +13,7 @@ let db = {
 db.connection       =  new sequelize('pbdc', process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD,{
 						host: 'localhost',
 						dialect: 'postgres',
-						// dialectOptions: {supportBigNumbers: true}
 					});
-
-
 
 // normal user 
 db.user = db.connection.define('user', {
@@ -25,23 +23,36 @@ db.user = db.connection.define('user', {
 	password: sequelize.STRING 
 })
 
+db.model = db.connection.define('model', {
+	name: sequelize.STRING,
+	nationality: sequelize.STRING,
+	price: sequelize.INTEGER
+})
+
+db.product = db.connection.define('product', {
+	brand: sequelize.STRING,
+	productname: sequelize.STRING,
+	description: sequelize.STRING,
+	price: sequelize.INTEGER
+})
 
 
 db.connection.sync( {force: true} ).then(
 	() => { 
 		console.log ( 'Synchronized' )
-		bcrypt.hash('a', null, null, (err,hash) =>{
-		db.user.create({
-			name: "a",
-			lastname: "b",
-			email:"a@b",
-			password: hash
-		}).then(()=>{
-			console.log( 'Usain Bolt Created' )
+		bcrypt.hash('abc', null, null, (err,hash) =>{
+			db.user.create({
+				firstname: "a",
+				lastname: "b",
+				email:"a@b",
+				password: hash
+			}).then(() => {
+				console.log( 'Usain Bolt Created' )
+			})
 		})
-	})
 	},
 	(err) => { console.log('Synchronize failed: ' + err) } 
-	)
+)
+
 
 module.exports = db
