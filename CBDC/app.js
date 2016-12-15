@@ -1,23 +1,28 @@
-const express         =  require('express')
+const sequelize = require( 'sequelize' )
+const express       = require('express');
+const bcrypt 		= require('bcrypt-nodejs')
 const app             =  express()
 const session         =  require('express-session')
 const LocalStrategy   =  require('passport-local').Strategy;
 const local           =  require('./models/local')
 const bodyParser     =  require('body-parser')
 const passport       =  require('passport')
-const makemodels       =  require('./models/makemodels')
-const makeproducts      =  require('./models/makeproducts')
+const db 			= 	require ('./models/database')
 
 
 app.use(session({
 	secret: 'oh wow very secret much security',
 	resave: true,
-	saveUninitialized: false
+	saveUninitialized: false,
+	cookie: {
+		secure: false,
+		maxAge: 24*60*60*1000
+	}
 }));
 
 app.use(bodyParser.urlencoded({     
   extended: true
-})); 
+}));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -33,6 +38,8 @@ let questions 	  = require( __dirname + '/routes/questions' )
 let register 	  = require( __dirname + '/routes/register' )
 let profile	      = require( __dirname + '/routes/profile' )
 let models	      = require( __dirname + '/routes/models' )
+let products	  = require( __dirname + '/routes/products' )
+let cart	  = require( __dirname + '/routes/cart' )
 
 app.use('/', loginout)
 app.use('/', index )
@@ -41,10 +48,9 @@ app.use('/', questions )
 app.use('/', register )
 app.use('/', profile )
 app.use('/', models )
+app.use('/', products )
+app.use('/', cart )
 
-
-makeproducts()
-makemodels()
 
 app.listen(8000, function () {
 	console.log('Server Running Like Usain Bolt')

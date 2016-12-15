@@ -7,6 +7,9 @@
 	li a{
 		color:#DCD0C0;
 	}
+	img {
+		height:30px;
+	}
 }
 
 
@@ -92,5 +95,18 @@
 
 	#model4 {
 		background-image: url('/images/models_model4.jpg');
+	}
+}
+
+.product-gallery {
+	
+	.col-s4{ 
+		display: inline-block;
+		float: left;
+		position:center;
+	img {
+		height: 350px;
+		width: 350px;
+	}
 	}
 }

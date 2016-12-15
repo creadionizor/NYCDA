@@ -13,7 +13,7 @@ passport.use( new LocalStrategy ( {
     	 usernameField: 'email'
     },
     function(email, password, done) {
-        console.log('email: ' + email + ' password: ' + password)
+        // console.log('email: ' + email + ' password: ' + password)
     	db.user.find( { 
             where: {
                 'email' : email

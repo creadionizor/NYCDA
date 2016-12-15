@@ -1,9 +1,20 @@
 .nav-wrapper
-	a.brand-logo.right(href='/') Logo
-	ul.left.hide-on-med-and-down
-		li
-			a(href='about') About
-		li
-			a(href='questions') How Does It Work
-		li
-			a(href='Register') Register
+	if user
+		a.brand-logo.right(href='/') Logo
+		ul.left.hide-on-med-and-down
+			li
+				a(href='models') Models
+			li
+				a(href='products') Products
+			li 
+				a(href='cart')
+					img(src='/images/shopping-cart.png')
+	else 
+		a.brand-logo.right(href='/') Logo
+		ul.left.hide-on-med-and-down
+			li
+				a(href='about') About
+			li
+				a(href='questions') How Does It Work
+			li
+				a(href='register') Register

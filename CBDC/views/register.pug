@@ -11,19 +11,20 @@ html(lang='en')
 		.background-register
 			.register-form
 				.row
-					form.col.s12
+					form.col.s12(action='/register' method='post')
 						.row
 							.input-field.col.s12
-								input#first_name.validate(type='text')
+								input#first_name(type='text' name='first_name' autocomplete='off' required)
 								label(for='first_name') First Name
 							.input-field.col.s12
-								input#last_name.validate(type='text')
+								input#last_name(type='text' name='last_name' autocomplete='off' required)
 								label(for='last_name') Last Name
 							.input-field.col.s12
-								input#email.validate(type='email')
+								input#email(type='email' name='email' autocomplete='off' required)
 								label(for='email') Email
 							.input-field.col.s12
-								input#password.validate(type='password')
+								input#password(type='password' name='password' autocomplete='off' required secret)
 								label(for='password') Password
 							div
-								a.waves-effect.waves-light.btn Register
+								button.waves-effect.waves-light.btn(type='submit')
+									| Register

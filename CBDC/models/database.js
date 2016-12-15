@@ -30,12 +30,12 @@ db.model = db.connection.define('model', {
 })
 
 db.product = db.connection.define('product', {
+	image: sequelize.STRING,
 	brand: sequelize.STRING,
 	productname: sequelize.STRING,
 	description: sequelize.STRING,
 	price: sequelize.INTEGER
 })
-
 
 db.connection.sync( {force: true} ).then(
 	() => { 
@@ -46,6 +46,9 @@ db.connection.sync( {force: true} ).then(
 				lastname: "b",
 				email:"a@b",
 				password: hash
+			}).then(()=>{
+				makeproducts()
+				makemodels()
 			}).then(() => {
 				console.log( 'Usain Bolt Created' )
 			})
@@ -54,5 +57,75 @@ db.connection.sync( {force: true} ).then(
 	(err) => { console.log('Synchronize failed: ' + err) } 
 )
 
-
 module.exports = db
+
+
+
+function makeproducts() { 
+
+	db.product.create({
+		image: 'images/products_bag1.jpg',
+		brand: 'Celine',
+		productname: 'Bag Nr. 1',
+		description: 'This is a fancy pancy bag',
+		price: 4000
+	})
+
+	db.product.create({
+		image: 'images/products_bag2.jpg',
+		brand: 'Chanel',
+		productname: 'Bag Nr. 2',
+		description: 'Tooooo expensive YAAA',
+		price: 6500
+	})
+
+	db.product.create({
+		image: 'images/products_bag3.jpg',
+		brand: 'Prada',
+		productname: 'Bag Nr. 3',
+		description: 'This is a bag for a (rich) old women',
+		price: 7000
+	})
+
+		db.product.create({
+		image: 'images/products_bag3.jpg',
+		brand: 'LALA LAND',
+		productname: 'Bag Nr. 4',
+		description: 'This bag is forbidden',
+		price: 9000
+	})
+} 
+
+
+
+function makemodels() {
+
+	db.model.create({
+		name: 'Mario',
+		nationality: 'Italian',
+		price: 5000
+	})
+
+	db.model.create({
+		name: 'Luigi',
+		nationality: 'German',
+		price: 5000
+	})
+
+
+	db.model.create({
+		name: 'Tina',
+		nationality: 'Swedish',
+		price: 5000
+	})
+
+
+	db.model.create({
+		name: 'Turner',
+		nationality: 'Dutch',
+		price: 5000
+	})
+
+}
+
+

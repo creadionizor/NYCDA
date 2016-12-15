@@ -1,0 +1,25 @@
+doctype html
+html(lang='en')
+	head
+		include includes/head.pug
+		title Test Title
+	body
+		nav
+			include includes/navbar.pug
+		section
+			div
+				h5 say hello to the products
+			.row
+				.product-gallery
+					for product in products
+						.col-s4
+							p Brand Name: #{product.brand}
+							p Product Name: #{product.productname}
+							p Description: #{product.description}
+							img(src=product.image)
+							p Price: € #{product.price}
+							a.btn.waves-effect.white.grey-text.darken-text-2 Add To Cart
+
+
+
+
