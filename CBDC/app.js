@@ -9,7 +9,6 @@ const bodyParser     =  require('body-parser')
 const passport       =  require('passport')
 const db 			= 	require ('./models/database')
 
-
 app.use(session({
 	secret: 'oh wow very secret much security',
 	resave: true,
@@ -39,7 +38,6 @@ let register 	  = require( __dirname + '/routes/register' )
 let profile	      = require( __dirname + '/routes/profile' )
 let models	      = require( __dirname + '/routes/models' )
 let products	  = require( __dirname + '/routes/products' )
-let cart	  = require( __dirname + '/routes/cart' )
 
 app.use('/', loginout)
 app.use('/', index )
@@ -49,7 +47,7 @@ app.use('/', register )
 app.use('/', profile )
 app.use('/', models )
 app.use('/', products )
-app.use('/', cart )
+
 
 
 app.listen(8000, function () {

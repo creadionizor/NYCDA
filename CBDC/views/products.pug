@@ -11,15 +11,15 @@ html(lang='en')
 				h5 say hello to the products
 			.row
 				.product-gallery
-					for product in products
+					each product in products
 						.col-s4
-							p Brand Name: #{product.brand}
-							p Product Name: #{product.productname}
+							p.brand Brand Name: #{product.brand}
+							p.product Product Name: #{product.productname}
 							p Description: #{product.description}
 							img(src=product.image)
-							p Price: € #{product.price}
-							a.btn.waves-effect.white.grey-text.darken-text-2 Add To Cart
-
+							p.price Price: € #{product.price}
+							button.waves-effect.waves-light.btn.addtocart(id=product.id)
+								| Order Now
 
 
 
