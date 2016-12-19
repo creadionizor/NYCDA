@@ -7,7 +7,6 @@ const passport       =  require('passport')
 const LocalStrategy  =  require('passport-local').Strategy;
 const local          =  require('../models/local')
 
-
 router.use(session({
 	secret: 'oh wow very secret much security',
 	resave: true,
@@ -19,25 +18,26 @@ router.use(session({
 }));
 
 
-router.route('/products')
 
+router.route('/request')
  	.get((req,res) => {
 
  		let user = req.user
  		if (user === undefined) {
  			res.render('index')
  		} else {
- 			db.product.findAll().then(products => {
-
- 				res.render('products', {
+ 			db.model.findAll().then(models => {
+ 				db.product.findAll().then(products => {
+ 				res.render('request', {
  					user: req.user,
- 					products: products
+ 					models: models,
+ 					products:products
  				})
- 			})
+ 			})})
+ 			
+ 			
  		}
   	});
 
 
 module.exports = router
-
-

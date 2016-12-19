@@ -1,0 +1,42 @@
+doctype html
+html(lang='en')
+	head
+		include includes/head.pug
+		title Test Title
+	body
+		nav
+			include includes/navbar.pug
+		div
+			h2 hello #{user.firstname}
+		div 
+			form(action='#')
+				.row
+					.imput-field.col.s6
+						input(value=user.firstname id="first_name" type="text" class="validate")
+						label(class="active" for="first_name") First Name
+					.imput-field.col.s6
+						input(value=user.lastname id="last_name" type="text" class="validate")
+						label(class="active" for="last_name") Last Name
+					.input-field.col.s6
+						select(multiple="")
+							option(value="" disabled="" selected="") Choose Your Models
+							each model in models 
+								option(value=model.id) #{model.name}
+						label Models 
+					.input-field.col.s6
+						select(multiple="")
+							option(value="" disabled="" selected="") Choose Your Products
+							each product in products
+								option(value=product.id) #{product.brand}
+						label Products 
+					div
+						p Arrival Date
+						input(type='date').datepicker
+					div
+						p Departure Date 
+						input(type='date').datepicker
+					div
+						input(type="checkbox" id='condition')
+						label(for='condition') Accept the Terms and Conditions
+					button.waves-effect.waves-light.btn
+								| Request Quote

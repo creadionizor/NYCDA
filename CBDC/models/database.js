@@ -23,12 +23,6 @@ db.user = db.connection.define('user', {
 	password: sequelize.STRING 
 })
 
-// db.cart = db.connection.define('cart', {
-// 	model: sequelize.STRING,
-// 	product: sequelize.STRING,
-// 	price: sequelize.INTEGER
-// })
-
 db.model = db.connection.define('model', {
 	name: sequelize.STRING,
 	nationality: sequelize.STRING,
@@ -43,17 +37,16 @@ db.product = db.connection.define('product', {
 	price: sequelize.INTEGER
 })
 
-// // cart belongs to user
-// db.user.hasMany(db.cart)
-// db.cart.belongsTo(db.user)
+db.selectedproduct = db.connection.define('selectedproduct', {
+	brand: sequelize.STRING,
+	productname: sequelize.STRING,
+	description: sequelize.STRING,
+})
 
-// // model belongs to cart
-// db.cart.hasMany(db.model)
-// db.model.belongsTo(db.cart)
-
-// // product belongs to cart
-// db.cart.hasMany(db.product)
-// db.product.belongsTo(db.cart)
+db.selectedmodel = db.connection.define('selectedmodel', {
+	name: sequelize.STRING,
+	nationality: sequelize.STRING,
+})
 
 
 db.connection.sync( {force: true} ).then(

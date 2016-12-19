@@ -38,6 +38,7 @@ let register 	  = require( __dirname + '/routes/register' )
 let profile	      = require( __dirname + '/routes/profile' )
 let models	      = require( __dirname + '/routes/models' )
 let products	  = require( __dirname + '/routes/products' )
+let request	      = require( __dirname + '/routes/request' )
 
 app.use('/', loginout)
 app.use('/', index )
@@ -47,6 +48,7 @@ app.use('/', register )
 app.use('/', profile )
 app.use('/', models )
 app.use('/', products )
+app.use('/', request )
 
 
 

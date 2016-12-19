@@ -9,28 +9,12 @@ html(lang='en')
 		section
 			.herobanner 
 				h1 This is an Amazing banner 
-			.carousel.carousel-slider.center(data-indicators='true')
-				#model1.carousel-item.white-text
-					h2 Mario
-					p.white-text Nationality: 
-					.carousel-fixed-item.center
-						a.btn.waves-effect.white.grey-text.darken-text-2 More Information
-						a.btn.waves-effect.white.grey-text.darken-text-2 Add To Cart
-				#model2.carousel-item.white-text
-					h2 Luigi
-					p.white-text Nationality: 
-					.carousel-fixed-item.center
-						a.btn.waves-effect.white.grey-text.darken-text-2 More Information
-						a.btn.waves-effect.white.grey-text.darken-text-2 Add To Cart
-				#model3.carousel-item.white-text
-					h2 Tina
-					p.white-text Nationality: 
-					.carousel-fixed-item.center
-						a.btn.waves-effect.white.grey-text.darken-text-2 More Information
-						a.btn.waves-effect.white.grey-text.darken-text-2 Add To Cart
-				#model4.carousel-item.white-text
-					h2 Turner
-					p.white-text Nationality: 
-					.carousel-fixed-item.center
-						a.btn.waves-effect.white.grey-text.darken-text-2 More Information
-						a.btn.waves-effect.white.grey-text.darken-text-2 Add To Cart
+				.carousel.carousel-slider.center(data-indicators='true')
+					each model in models 
+						.carousel-item.white-text(id='model' +model.id)
+							h2 Name: #{model.name}
+							p.white-text Nationality: #{model.nationality}
+							.carousel-fixed-item.center
+								a.btn.waves-effect.white.grey-text.darken-text-2 More Information
+								a.btn.waves-effect.white.grey-text.darken-text-2 Add To Cart
+
