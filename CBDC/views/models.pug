@@ -1,0 +1,20 @@
+doctype html
+html(lang='en')
+	head
+		include includes/head.pug
+		title Test Title
+	body
+		nav
+			include includes/navbar.pug
+		section
+			.herobanner 
+				h1 This is an Amazing banner 
+				.carousel.carousel-slider.center(data-indicators='true')
+					each model in models 
+						.carousel-item.white-text(id='model' +model.id)
+							h2 Name: #{model.name}
+							p.white-text Nationality: #{model.nationality}
+							.carousel-fixed-item.center
+								a.btn.waves-effect.white.grey-text.darken-text-2 More Information
+								a.btn.waves-effect.white.grey-text.darken-text-2 Add To Cart
+

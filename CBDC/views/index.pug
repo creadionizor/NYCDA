@@ -1,0 +1,23 @@
+doctype html
+html(lang='en')
+	head
+		include includes/head.pug
+		title Test Title 34
+	body
+		nav
+			include includes/navbar.pug
+		.background-home
+			.login-form
+				h2 Welcome to ...
+				.row
+					form.col.s12(action='/login' method='post')
+						.row
+							.input-field.col.s12
+								input#email(type='email' name='email' autocomplete='off' required)
+								label(for='email') Email
+							.input-field.col.s12
+								input#password(type='password' name='password' autocomplete='off' required secret)
+								label(for='password') Password
+							div
+								button.waves-effect.waves-light.btn(type='submit')
+									| Log-in
